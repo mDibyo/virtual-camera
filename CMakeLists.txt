@@ -9,4 +9,5 @@ add_executable(DisplayImage display_image.cpp)
 target_link_libraries(DisplayImage ${OpenCV_LIBS})
 
 set(SOURCE_FILES main.cpp)
-add_executable(virtual_camera ${SOURCE_FILES})
+add_executable(VirtualCamera ${SOURCE_FILES})
+target_link_libraries(VirtualCamera ${OpenCV_LIBS})
