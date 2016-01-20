@@ -26,6 +26,8 @@ void PTZFrame::setPTZ(double new_point_angle, double new_tilt_angle, double new_
   } else if (tilt_angle > max_abs_tilt_angle) {
     tilt_angle = max_abs_tilt_angle;
   }
+
+  printf("called with %f, %f, %f\n", point_angle, tilt_angle, zoom_setting);
 }
 
 

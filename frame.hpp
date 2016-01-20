@@ -24,7 +24,14 @@ public:
       tilt_angle(0.0),
       zoom_setting(1.0) {};
 
+
   void setPTZ(double new_point_angle, double new_tilt_angle, double new_zoom_setting);
+
+
+  inline void offsetPTZ(double point_angle_offset, double tilt_angle_offset, double zoom_setting_offset) {
+    setPTZ(point_angle + point_angle_offset, tilt_angle + tilt_angle_offset, zoom_setting + zoom_setting_offset);
+  }
+
 
   void getRect(Rect& rect);
 
