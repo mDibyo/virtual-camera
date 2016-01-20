@@ -9,9 +9,9 @@ void PTZFrame::setPTZ(double new_point_angle, double new_tilt_angle, double new_
     zoom_setting = 1;
   }
   output_size = Size_<double>(input_size) / zoom_setting;
-  Size pan_tilt_range_size = (input_size - output_size) / 2;
-  double max_abs_point_angle = atan((double) pan_tilt_range_size.width / (2 * distance));
-  double max_abs_tilt_angle = atan((double) pan_tilt_range_size.height / (2 * distance));
+  Size pt_range_half_size = (input_size - output_size) / 2;
+  double max_abs_point_angle = atan((double) pt_range_half_size.width / distance);
+  double max_abs_tilt_angle = atan((double) pt_range_half_size.height / distance);
 
   point_angle = new_point_angle;
   if (point_angle < -max_abs_point_angle) {
@@ -30,7 +30,8 @@ void PTZFrame::setPTZ(double new_point_angle, double new_tilt_angle, double new_
 
 
 void PTZFrame::getRect(Rect& rect) {
-  Point rect_center((int) (distance * tan(point_angle)), (int) (distance * tan(tilt_angle)));
+  Point rect_center((int) (input_size.width / 2 + distance * tan(point_angle)),
+                    (int) (input_size.height / 2 + distance * tan(tilt_angle)));
   if (rect_center.x < output_size.width/2) {
     rect_center.x = output_size.width/2;
   } else if (rect_center.x + output_size.width/2 > input_size.width) {
@@ -42,5 +43,5 @@ void PTZFrame::getRect(Rect& rect) {
     rect_center.y = input_size.height - output_size.height/2;
   }
 
-  rect = Rect(rect_center - output_size/2, output_size);
+  rect = Rect(Point(rect_center.x - output_size.width/2, rect_center.y - output_size.height/2), output_size);
 }
