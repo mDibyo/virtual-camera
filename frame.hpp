@@ -1,5 +1,5 @@
-#ifndef VIRTUAL_CAMERA_FRAME_H
-#define VIRTUAL_CAMERA_FRAME_H
+#ifndef VIRTUAL_CAMERA_FRAME_HPP
+#define VIRTUAL_CAMERA_FRAME_HPP
 
 #include <math.h> /* tan, atan */
 #include "opencv2/opencv.hpp"
@@ -38,4 +38,4 @@ public:
 };
 
 
-#endif //VIRTUAL_CAMERA_FRAME_H
+#endif //VIRTUAL_CAMERA_FRAME_HPP

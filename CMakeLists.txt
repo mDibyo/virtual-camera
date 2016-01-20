@@ -7,11 +7,8 @@ set(WITH_FFMPEG ON)
 
 find_package(OpenCV REQUIRED)
 
-add_executable(DisplayImage display_image.cpp)
-target_link_libraries(DisplayImage ${OpenCV_LIBS})
-
 add_library(VirtualCamera_LIBRARY
-        frame.h
+        frame.hpp
         frame.cpp)
 target_link_libraries(VirtualCamera_LIBRARY ${OpenCV_LIBS})
 target_include_directories(VirtualCamera_LIBRARY PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
